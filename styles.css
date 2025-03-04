@@ -1,383 +1,838 @@
+/* Base Styles */
 .groq-toggle-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-  }
-  
-  .groq-toggle-button svg {
-    width: 24px;
-    height: 24px;
-    color: white;
-    transition: transform 0.3s ease;
-  }
-  
-  .groq-toggle-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  }
-  
-  .groq-toggle-button.active svg {
-    transform: rotate(45deg);
-  }
-  
-  .groq-panel-container {
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
-    width: 400px;
-    height: 600px;
-    background: rgba(15, 20, 25, 0.95);
-    border-radius: 15px;
-    z-index: 9998;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(86, 111, 242, 0.3);
-  }
-  
-  .groq-panel-container.hidden {
-    transform: translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .groq-panel {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #edf2f7;
-    font-family: 'Roboto', 'Arial', sans-serif;
-  }
-  
-  .groq-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(90deg, #1e3c72, #2a5298);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .groq-title {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  }
-  
-  .groq-close-btn {
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .groq-close-btn:hover {
-    transform: scale(1.2);
-  }
-  
-  .groq-tabs {
-    display: flex;
-    background: rgba(30, 40, 50, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .groq-tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    font-size: 14px;
-  }
-  
-  .groq-tab:hover {
-    background: rgba(86, 111, 242, 0.1);
-  }
-  
-  .groq-tab.active {
-    background: rgba(86, 111, 242, 0.2);
-  }
-  
-  .groq-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #56f, #05d);
-  }
-  
-  .groq-content {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .groq-tab-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    transform: translateX(20px);
-  }
-  
-  .groq-tab-content.active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-  }
-  
-  .groq-chat-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .groq-chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px;
-  }
-  
-  .groq-message {
-    display: flex;
-    margin-bottom: 15px;
-    animation: fadeIn 0.3s ease;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .groq-message-avatar {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    background: rgba(86, 111, 242, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-  }
-  
-  .user-message .groq-message-avatar {
-    background: rgba(120, 84, 242, 0.2);
-  }
-  
-  .groq-message-text {
-    background: rgba(40, 50, 60, 0.5);
-    padding: 10px 15px;
-    border-radius: 10px;
-    flex: 1;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-  .user-message .groq-message-text {
-    background: rgba(86, 111, 242, 0.2);
-  }
-  
-  .system-message .groq-message-text {
-    background: rgba(242, 86, 86, 0.2);
-  }
-  
-  .groq-thinking {
-    display: inline-block;
-  }
-  
-  .groq-thinking span {
-    opacity: 0;
-    animation: dots 1.5s infinite;
-  }
-  
-  .groq-thinking .dot-1 { animation-delay: 0s; }
-  .groq-thinking .dot-2 { animation-delay: 0.3s; }
-  .groq-thinking .dot-3 { animation-delay: 0.6s; }
-  
-  @keyframes dots {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-  
-  .groq-input-container {
-    padding: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(30, 40, 50, 0.7);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .groq-model-select {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(40, 50, 60, 0.8);
-    border: 1px solid rgba(86, 111, 242, 0.3);
-    color: #edf2f7;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-  
-  .groq-model-select:focus {
-    border-color: rgba(86, 111, 242, 0.8);
-  }
-  
-  .groq-chat-input {
-    resize: none;
-    height: 80px;
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: rgba(40, 50, 60, 0.8);
-    border: 1px solid rgba(86, 111, 242, 0.3);
-    color: #edf2f7;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-  
-  .groq-chat-input:focus {
-    border-color: rgba(86, 111, 242, 0.8);
-  }
-  
-  .groq-send-btn {
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #56f, #05d);
-    border: none;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 14px;
-  }
-  
-  .groq-send-btn:hover {
-    background: linear-gradient(135deg, #67f, #16e);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(86, 111, 242, 0.4);
-  }
-  
-  .groq-settings-container {
-    padding: 20px;
-    overflow-y: auto;
-    height: 100%;
-  }
-  
-  .groq-setting {
-    margin-bottom: 20px;
-  }
-  
-  .groq-setting label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #a0aec0;
-  }
-  
-  .groq-setting input[type="password"],
-  .groq-setting input[type="number"] {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: rgba(40, 50, 60, 0.8);
-    border: 1px solid rgba(86, 111, 242, 0.3);
-    color: #edf2f7;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-  
-  .groq-setting input[type="password"]:focus,
-  .groq-setting input[type="number"]:focus {
-    border-color: rgba(86, 111, 242, 0.8);
-  }
-  
-  .groq-save-key-btn {
-    margin-top: 10px;
-    padding: 8px 15px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #56f, #05d);
-    border: none;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 14px;
-  }
-  
-  .groq-save-key-btn:hover {
-    background: linear-gradient(135deg, #67f, #16e);
-    transform: translateY(-2px);
-  }
-  
-  .groq-setting input[type="range"] {
-    width: 80%;
-    background: rgba(40, 50, 60, 0.8);
-  }
-  
-  .groq-temp-value {
-    display: inline-block;
-    margin-left: 10px;
-    width: 30px;
-    text-align: center;
-    background: rgba(86, 111, 242, 0.3);
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-  }
-  
-  /* Code formatting */
-  pre {
-    background: rgba(30, 30, 30, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin: 10px 0;
-  }
-  
-  code {
-    font-family: 'Fira Code', monospace;
-    font-size: 13px;
-  }
-  
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: rgba(30, 40, 50, 0.8);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(86, 111, 242, 0.5);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(86, 111, 242, 0.8);
-  }
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.groq-toggle-button svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.groq-toggle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.groq-toggle-button.active svg {
+  transform: rotate(45deg);
+}
+
+/* Panel Container */
+.groq-panel-container {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: 450px;
+  height: 650px;
+  background: rgba(15, 20, 25, 0.95);
+  border-radius: 12px;
+  z-index: 9998;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(86, 111, 242, 0.3);
+  /* No transition for width/height to allow smooth resizing */
+}
+
+/* Maximized state */
+.groq-panel-container.groq-maximized {
+  top: 20px !important;
+  left: 20px !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  width: calc(100vw - 40px) !important;
+  height: calc(100vh - 40px) !important;
+}
+
+.groq-panel-container.hidden {
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* During resize or drag operations */
+.groq-panel-container.groq-resizing,
+.groq-panel-container.groq-dragging {
+  transition: none;
+  opacity: 0.9;
+}
+
+.groq-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #edf2f7;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+/* Resize Handles */
+.groq-resize-handle {
+  position: absolute;
+  z-index: 100;
+}
+
+/* Corner resize handles */
+.groq-resize-se {
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+}
+
+.groq-resize-sw {
+  bottom: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nesw-resize;
+}
+
+.groq-resize-ne {
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nesw-resize;
+}
+
+.groq-resize-nw {
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+}
+
+/* Edge resize handles */
+.groq-resize-n {
+  top: 0;
+  left: 15px;
+  right: 15px;
+  height: 5px;
+  cursor: ns-resize;
+}
+
+.groq-resize-e {
+  top: 15px;
+  right: 0;
+  bottom: 15px;
+  width: 5px;
+  cursor: ew-resize;
+}
+
+.groq-resize-s {
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  height: 5px;
+  cursor: ns-resize;
+}
+
+.groq-resize-w {
+  top: 15px;
+  left: 0;
+  bottom: 15px;
+  width: 5px;
+  cursor: ew-resize;
+}
+
+/* Header */
+.groq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none; /* Prevent text selection during drag */
+}
+
+.groq-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.groq-window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.groq-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.groq-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.groq-close-btn:hover {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+/* Tabs */
+.groq-tabs {
+  display: flex;
+  background: rgba(30, 40, 50, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.groq-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  font-size: 14px;
+}
+
+.groq-tab:hover {
+  background: rgba(86, 111, 242, 0.1);
+}
+
+.groq-tab.active {
+  background: rgba(86, 111, 242, 0.2);
+}
+
+.groq-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #56f, #05d);
+}
+
+/* Content */
+.groq-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.groq-tab-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transform: translateX(20px);
+}
+
+.groq-tab-content.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+/* Chat container */
+.groq-chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.groq-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+/* Model info display */
+.groq-model-info {
+  padding: 5px 15px;
+  background: rgba(20, 30, 40, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.groq-model-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: rgba(86, 111, 242, 0.2);
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+/* Status bar */
+.groq-status-bar {
+  padding: 5px 15px;
+  background: rgba(20, 25, 35, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+/* Message styling */
+.groq-message {
+  display: flex;
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.groq-message-avatar {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  background: rgba(86, 111, 242, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.user-message .groq-message-avatar {
+  background: rgba(120, 84, 242, 0.2);
+}
+
+.system-message .groq-message-avatar {
+  background: rgba(242, 86, 86, 0.2);
+}
+
+.groq-message-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.groq-message-text {
+  background: rgba(40, 50, 60, 0.5);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-x: auto; /* Allow horizontal scrolling for code blocks */
+}
+
+.user-message .groq-message-text {
+  background: rgba(86, 111, 242, 0.2);
+}
+
+.system-message .groq-message-text {
+  background: rgba(242, 86, 86, 0.2);
+}
+
+/* Copy button */
+.groq-copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background: rgba(40, 50, 60, 0.8);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  color: #a0aec0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.groq-copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.groq-message:hover .groq-copy-btn {
+  opacity: 0.8;
+}
+
+.groq-copy-btn:hover {
+  opacity: 1 !important;
+  background: rgba(86, 111, 242, 0.5);
+  color: white;
+}
+
+.groq-copy-btn.copied {
+  background: rgba(39, 174, 96, 0.5);
+  color: white;
+}
+
+/* Message metadata */
+.groq-message-metadata {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 12px;
+  color: #a0aec0;
+  padding-left: 5px;
+}
+
+.groq-message-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.groq-model-badge, 
+.groq-time-badge, 
+.groq-token-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: rgba(86, 111, 242, 0.15);
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.groq-time-badge {
+  background: rgba(86, 111, 242, 0.1);
+}
+
+.groq-token-badge {
+  background: rgba(86, 111, 242, 0.05);
+}
+
+/* Thinking animation */
+.groq-thinking {
+  display: inline-block;
+}
+
+.groq-thinking span {
+  opacity: 0;
+  animation: dots 1.5s infinite;
+}
+
+.groq-thinking .dot-1 { animation-delay: 0s; }
+.groq-thinking .dot-2 { animation-delay: 0.3s; }
+.groq-thinking .dot-3 { animation-delay: 0.6s; }
+
+@keyframes dots {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Code formatting */
+.groq-code-block {
+  background: rgba(20, 25, 35, 0.95);
+  border-radius: 8px;
+  margin: 10px 0;
+  border: 1px solid rgba(86, 111, 242, 0.2);
+  overflow: hidden;
+}
+
+.groq-code-header {
+  padding: 6px 12px;
+  background: rgba(86, 111, 242, 0.2);
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #a0aec0;
+  border-bottom: 1px solid rgba(86, 111, 242, 0.2);
+}
+
+.groq-code-block pre {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.groq-code-block code {
+  display: block;
+  padding: 12px 16px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #e4e4e4;
+  tab-size: 4;
+}
+
+.groq-inline-code {
+  padding: 2px 5px;
+  background: rgba(86, 111, 242, 0.1);
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  color: #e4e4e4;
+}
+
+/* Input Section */
+.groq-input-container {
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30, 40, 50, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groq-model-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(40, 50, 60, 0.8);
+  border: 1px solid rgba(86, 111, 242, 0.3);
+  color: #edf2f7;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.groq-model-select:focus {
+  border-color: rgba(86, 111, 242, 0.8);
+}
+
+.groq-chat-input {
+  resize: none;
+  height: 80px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(40, 50, 60, 0.8);
+  border: 1px solid rgba(86, 111, 242, 0.3);
+  color: #edf2f7;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.groq-chat-input:focus {
+  border-color: rgba(86, 111, 242, 0.8);
+}
+
+.groq-send-btn {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #56f, #05d);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  position: relative;
+}
+
+.groq-send-btn:hover {
+  background: linear-gradient(135deg, #67f, #16e);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(86, 111, 242, 0.4);
+}
+
+.groq-send-btn.sending {
+  pointer-events: none;
+  background: linear-gradient(135deg, #45e, #04c);
+}
+
+.sending-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Settings page */
+.groq-settings-container {
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.groq-setting {
+  margin-bottom: 25px;
+}
+
+.groq-setting label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a0aec0;
+  display: flex;
+  align-items: center;
+}
+
+.groq-setting-info {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #718096;
+  opacity: 0.8;
+}
+
+.groq-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.groq-toggle-visibility {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.groq-toggle-visibility:hover {
+  color: #edf2f7;
+}
+
+.eye-icon.visible {
+  color: #56f;
+}
+
+.groq-setting input[type="password"],
+.groq-setting input[type="number"],
+.groq-setting textarea,
+.groq-settings-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(40, 50, 60, 0.8);
+  border: 1px solid rgba(86, 111, 242, 0.3);
+  color: #edf2f7;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.groq-setting input[type="password"] {
+  padding-right: 40px; /* Make room for the eye icon */
+}
+
+.groq-setting input[type="password"]:focus,
+.groq-setting input[type="number"]:focus,
+.groq-setting textarea:focus,
+.groq-settings-select:focus {
+  border-color: rgba(86, 111, 242, 0.8);
+  box-shadow: 0 0 0 2px rgba(86, 111, 242, 0.2);
+}
+
+.groq-setting textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.groq-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.groq-setting input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 5px;
+  background: rgba(40, 50, 60, 0.8);
+  border-radius: 5px;
+  outline: none;
+}
+
+.groq-setting input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #56f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.groq-setting input[type="range"]::-webkit-slider-thumb:hover {
+  background: #67f;
+  transform: scale(1.2);
+}
+
+.groq-temp-value {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  background: rgba(86, 111, 242, 0.3);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.groq-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding: 0 5px;
+  font-size: 12px;
+  color: #718096;
+}
+
+.groq-template-label {
+  font-size: 12px;
+  color: #718096;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.groq-template-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.groq-template-chip {
+  padding: 6px 12px;
+  background: rgba(86, 111, 242, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(86, 111, 242, 0.3);
+  color: #edf2f7;
+}
+
+.groq-template-chip:hover {
+  background: rgba(86, 111, 242, 0.3);
+  transform: translateY(-2px);
+}
+
+.groq-template-chip.active {
+  background: rgba(86, 111, 242, 0.5);
+}
+
+.groq-settings-actions {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.groq-save-settings-btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #56f, #05d);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(86, 111, 242, 0.3);
+}
+
+.groq-save-settings-btn:hover {
+  background: linear-gradient(135deg, #67f, #16e);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(86, 111, 242, 0.4);
+}
+
+.groq-save-settings-btn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Notification */
+.groq-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.groq-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.groq-notification-success {
+  background: rgba(39, 174, 96, 0.9);
+}
+
+.groq-notification-error {
+  background: rgba(231, 76, 60, 0.9);
+}
+
+.groq-notification-info {
+  background: rgba(86, 111, 242, 0.9);
+}
+
+.groq-notification-icon {
+  font-weight: bold;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 40, 50, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(86, 111, 242, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(86, 111, 242, 0.8);
+}
