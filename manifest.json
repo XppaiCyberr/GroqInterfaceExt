@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Futuristic Groq API Client",
+    "name": "Groq Client Extension",
     "version": "1.0",
-    "description": "A futuristic interface for interacting with Groq API",
+    "description": "An interface for interacting with Groq API",
     "permissions": ["activeTab", "storage"],
     "content_scripts": [
       {
