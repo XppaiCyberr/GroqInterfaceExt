@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Futuristic Groq API Client",
+    "version": "1.0",
+    "description": "A futuristic interface for interacting with Groq API",
+    "permissions": ["activeTab", "storage"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ]
+  }
