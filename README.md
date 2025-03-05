@@ -102,10 +102,6 @@ groq-api-extension/
 2. Make any desired modifications
 3. Load as an unpacked extension in Chrome
 
-## License
-
-MIT License - See [LICENSE](LICENSE) for details
-
 ## Acknowledgments
 
 - [Groq](https://groq.com) for their powerful API
