@@ -93,8 +93,7 @@ groq-api-extension/
 │   ├── icon16.png
 │   ├── icon48.png
 │   └── icon128.png
-└── screenshots/
-    └── main.png
+└── screenshot.jpg
 ```
 
 ### Building from Source
