@@ -2,7 +2,7 @@
 
 A powerful, feature-rich Chrome extension for interacting with the Groq API directly from any webpage. This extension provides a floating chat interface with advanced features for developers and AI enthusiasts.
 
-![Groq API Extension Screenshot](screenshot.jpg)
+![Groq API Extension Screenshot](screenshot.png)
 
 ## Features
 
