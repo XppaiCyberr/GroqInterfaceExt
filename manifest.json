@@ -1,10 +1,10 @@
 {
-    "manifest_version": 3,
-    "name": "Groq Client Extension",
-    "version": "1.1",
-    "description": "An interface for interacting with Groq API",
-    "permissions": ["activeTab", "storage", "clipboardWrite"],
-    "content_scripts": [
+  "manifest_version": 3,
+  "name": "Groq API Extension",
+  "version": "2.0",
+  "description": "A powerful interface for interacting with the Groq API with advanced features",
+  "permissions": ["activeTab", "storage", "clipboardWrite"],
+  "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
