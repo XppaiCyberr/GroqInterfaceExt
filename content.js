@@ -93,440 +93,113 @@ function initGroqExtension() {
     <div class="groq-resize-handle groq-resize-nw" title="Drag to resize"></div>
   `;
 
-  // Create panel content with enhanced UI
-  panelContainer.innerHTML = `
-    <div class="groq-panel">
-      <div class="groq-header">
-        <div class="groq-title-area">
-          <div class="groq-title">GROQ API INTERFACE</div>
-          <div class="groq-conversation-controls">
-            <button class="groq-btn groq-new-chat-btn" title="New Chat">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-              </svg>
-            </button>
-            <div class="groq-conversation-dropdown">
-              <button class="groq-btn groq-conversation-menu-btn" title="Conversation Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="1"></circle>
-                  <circle cx="12" cy="5" r="1"></circle>
-                  <circle cx="12" cy="19" r="1"></circle>
-                </svg>
-              </button>
-              <div class="groq-dropdown-content">
-                <button class="groq-dropdown-item groq-save-conversation-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                    <polyline points="7 3 7 8 15 8"></polyline>
-                  </svg>
-                  Save Conversation
-                </button>
-                <button class="groq-dropdown-item groq-load-conversation-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                  Load Conversation
-                </button>
-                <button class="groq-dropdown-item groq-export-conversation-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
-                  Export Conversation
-                </button>
-                <div class="groq-dropdown-submenu">
-                  <button class="groq-dropdown-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    </svg>
-                    Export Format
-                  </button>
-                  <div class="groq-dropdown-subcontent">
-                    <button class="groq-dropdown-item groq-export-txt-btn">Text (.txt)</button>
-                    <button class="groq-dropdown-item groq-export-md-btn">Markdown (.md)</button>
-                    <button class="groq-dropdown-item groq-export-json-btn">JSON (.json)</button>
-                    <button class="groq-dropdown-item groq-export-html-btn">HTML (.html)</button>
-                  </div>
-                </div>
-                <button class="groq-dropdown-item groq-clear-conversation-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                  </svg>
-                  Clear Conversation
-                </button>
-              </div>
-            </div>
+// Create panel content
+panelContainer.innerHTML = `
+  <div class="groq-panel">
+    <div class="groq-header">
+      <div class="groq-title">GROQ API INTERFACE</div>
+      <div class="groq-window-controls">
+        <button class="groq-btn groq-minimize-btn" title="Minimize">_</button>
+        <button class="groq-btn groq-maximize-btn" title="Maximize">□</button>
+        <button class="groq-btn groq-close-btn" title="Close">×</button>
+      </div>
+    </div>
+    <div class="groq-tabs">
+      <div class="groq-tab active" data-tab="chat">Chat</div>
+      <div class="groq-tab" data-tab="settings">Settings</div>
+    </div>
+    <div class="groq-content">
+      <div class="groq-tab-content active" id="chat-content">
+        <div class="groq-chat-container">
+          <div class="groq-chat-messages" id="groq-messages"></div>
+          <div class="groq-model-info"></div>
+          <div class="groq-input-container">
+            <select class="groq-model-select">
+              <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile</option>
+              <option value="llama-3.3-70b-specdec">Llama 3.3 70B SpecDec</option>
+              <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 Distill Llama 70B</option>
+              <option value="llama3-70b-8192">Llama 3 70B (8K)</option>
+              <option value="mixtral-8x7b-32768">Mixtral 8x7B (32K)</option>
+              <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant</option>
+              <option value="llama3-8b-8192">Llama 3 8B (8K)</option>
+              <option value="llama-3.2-1b-preview">Llama 3.2 1B Preview</option>
+              <option value="llama-3.2-3b-preview">Llama 3.2 3B Preview</option>
+              <option value="llama-guard-3-8b">Llama Guard 3 8B</option>
+              <option value="gemma2-9b-it">Gemma 2 9B IT</option>
+            </select>
+            <textarea class="groq-chat-input" placeholder="Enter your message..."></textarea>
+            <button class="groq-send-btn">Send</button>
           </div>
-        </div>
-        <div class="groq-window-controls">
-          <button class="groq-btn groq-minimize-btn" title="Minimize">_</button>
-          <button class="groq-btn groq-maximize-btn" title="Maximize">□</button>
-          <button class="groq-btn groq-close-btn" title="Close">×</button>
+          <div class="groq-status-bar">Ready to chat</div>
         </div>
       </div>
-      <div class="groq-tabs">
-        <div class="groq-tab active" data-tab="chat">Chat</div>
-        <div class="groq-tab" data-tab="settings">Settings</div>
-        <div class="groq-tab" data-tab="usage">Usage</div>
-        <div class="groq-tab" data-tab="templates">Templates</div>
-      </div>
-      <div class="groq-content">
-        <div class="groq-tab-content active" id="chat-content">
-          <div class="groq-chat-container">
-            <div class="groq-chat-messages" id="groq-messages"></div>
-            <div class="groq-model-info"></div>
-            <div class="groq-context-tools">
-              <button class="groq-context-btn" title="Use page context">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <div class="groq-tab-content" id="settings-content">
+        <div class="groq-settings-container">
+          <div class="groq-setting">
+            <label for="groq-api-key">API Key</label>
+            <div class="groq-input-wrapper">
+              <input type="password" id="groq-api-key" placeholder="Enter your Groq API key">
+              <button class="groq-toggle-visibility" id="toggle-api-visibility">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                Use Page Context
               </button>
-              <button class="groq-selected-text-btn" title="Use selected text">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                </svg>
-                Use Selection
-              </button>
-              <div class="groq-template-dropdown">
-                <button class="groq-template-btn" title="Insert template">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="8" y1="12" x2="16" y2="12"></line>
-                    <line x1="8" y1="16" x2="16" y2="16"></line>
-                    <line x1="8" y1="8" x2="10" y2="8"></line>
-                  </svg>
-                  Templates
-                </button>
-                <div class="groq-template-dropdown-content"></div>
-              </div>
-            </div>
-            <div class="groq-input-container">
-              <div class="groq-model-toolbar">
-                <select class="groq-model-select">
-                  <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile</option>
-                  <option value="llama-3.3-70b-specdec">Llama 3.3 70B SpecDec</option>
-                  <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 Distill Llama 70B</option>
-                  <option value="llama3-70b-8192">Llama 3 70B (8K)</option>
-                  <option value="mixtral-8x7b-32768">Mixtral 8x7B (32K)</option>
-                  <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant</option>
-                  <option value="llama3-8b-8192">Llama 3 8B (8K)</option>
-                  <option value="llama-3.2-1b-preview">Llama 3.2 1B Preview</option>
-                  <option value="llama-3.2-3b-preview">Llama 3.2 3B Preview</option>
-                  <option value="llama-guard-3-8b">Llama Guard 3 8B</option>
-                  <option value="gemma2-9b-it">Gemma 2 9B IT</option>
-                </select>
-                <div class="groq-parameter-dropdown">
-                  <button class="groq-parameter-btn" title="Adjust parameters">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="3"></circle>
-                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                  </button>
-                  <div class="groq-parameter-content">
-                    <div class="groq-quick-parameter">
-                      <label>Temperature: <span class="groq-temp-display">0.7</span></label>
-                      <input type="range" class="groq-quick-temp" min="0" max="1" step="0.05" value="0.7">
-                    </div>
-                    <div class="groq-quick-parameter">
-                      <label>Max Tokens: <span class="groq-tokens-display">8192</span></label>
-                      <input type="range" class="groq-quick-tokens" min="100" max="32768" step="100" value="8192">
-                    </div>
-                    <div class="groq-advanced-params-toggle">
-                      <button class="groq-toggle-advanced">Advanced Parameters</button>
-                      <div class="groq-advanced-params">
-                        <div class="groq-quick-parameter">
-                          <label>Top P: <span class="groq-top-p-display">1.0</span></label>
-                          <input type="range" class="groq-quick-top-p" min="0" max="1" step="0.05" value="1.0">
-                        </div>
-                        <div class="groq-quick-parameter">
-                          <label>Frequency Penalty: <span class="groq-freq-display">0.0</span></label>
-                          <input type="range" class="groq-quick-freq" min="0" max="2" step="0.1" value="0.0">
-                        </div>
-                        <div class="groq-quick-parameter">
-                          <label>Presence Penalty: <span class="groq-pres-display">0.0</span></label>
-                          <input type="range" class="groq-quick-pres" min="0" max="2" step="0.1" value="0.0">
-                        </div>
-                      </div>
-                    </div>
-                    <button class="groq-save-preset-btn">Save as Preset</button>
-                    <div class="groq-parameter-presets">
-                      <label>Presets:</label>
-                      <select class="groq-preset-select">
-                        <option value="default">Default</option>
-                        <option value="creative">Creative</option>
-                        <option value="precise">Precise</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <textarea class="groq-chat-input" placeholder="Enter your message... (Ctrl+Enter to send)"></textarea>
-              <div class="groq-input-actions">
-                <button class="groq-send-btn">Send</button>
-                <div class="groq-keyboard-shortcut-hint">Ctrl+Enter</div>
-              </div>
-            </div>
-            <div class="groq-status-bar">
-              <span class="groq-status-text">Ready to chat</span>
-              <span class="groq-session-usage">Session: 0 tokens</span>
             </div>
           </div>
-        </div>
-        <div class="groq-tab-content" id="settings-content">
-          <div class="groq-settings-container">
-            <div class="groq-setting">
-              <label for="groq-api-key">API Key</label>
-              <div class="groq-input-wrapper">
-                <input type="password" id="groq-api-key" placeholder="Enter your Groq API key">
-                <button class="groq-toggle-visibility" id="toggle-api-visibility">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                </button>
+          <div class="groq-setting">
+            <label for="groq-system-message">System Message</label>
+            <textarea id="groq-system-message" placeholder="Set custom instructions for the AI..." rows="4"></textarea>
+            <div class="groq-system-templates">
+              <p class="groq-template-label">Quick templates:</p>
+              <div class="groq-template-chips">
+                <button class="groq-template-chip" data-template="You are a helpful AI assistant specialized in programming.">Programmer</button>
+                <button class="groq-template-chip" data-template="You are a concise assistant. Provide short, direct answers.">Concise</button>
+                <button class="groq-template-chip" data-template="You are a creative writer who responds with vivid descriptions and storytelling.">Creative</button>
               </div>
-            </div>
-            <div class="groq-setting">
-              <label for="groq-system-message">System Message</label>
-              <textarea id="groq-system-message" placeholder="Set custom instructions for the AI..." rows="4"></textarea>
-              <div class="groq-system-templates">
-                <p class="groq-template-label">Quick templates:</p>
-                <div class="groq-template-chips">
-                  <button class="groq-template-chip" data-template="You are an advanced AI assistant, highly knowledgeable in a wide range of topics, including programming, databases, APIs, web development, blockchain, AI/ML, automation, gaming, and general problem-solving. Your goal is to provide clear, concise, and accurate responses tailored to the user's needs.
-
-General Guidelines:
-Be Accurate & Up-to-Date: Always provide the most relevant and correct information. Use external sources if necessary.
-Be Adaptive & Context-Aware: Maintain conversation history to provide continuity and understand the user ongoing projects.
-Be Concise Yet Informative: Provide detailed explanations without unnecessary fluff.
-Be Actionable & Practical: Offer working code examples, clear explanations, and direct solutions whenever possible.
-
-Technical Abilities:
-Coding & Debugging: Support multiple programming languages (e.g., JavaScript, Python, PHP, Solidity, SQL). Write efficient and optimized code.
-Web Development: Assist with front-end (HTML, CSS, Tailwind, React) and back-end (Node.js, PHP, databases).
-Blockchain & Smart Contracts: Handle Solidity, Ethereum, Base Sepolia, OnchainKit, and contract deployment/debugging.
-API Integration: Work with RESTful APIs, cURL requests, WebSockets, and third-party integrations.
-Automation & Scripting: Write shell scripts, bots, and automation scripts for various tasks.
-Data Management: Design and optimize databases for scalability and efficiency.
-Response Formatting:
-
-For Code: Always format code snippets properly and explain them when necessary.
-For Explanations: Use bullet points, examples, and clear steps to improve readability.
-For Troubleshooting: Identify the issue, suggest fixes, and provide debugging steps.
-For Design & UI/UX: Offer modern, clean, and user-friendly suggestions with a focus on accessibility.
-
-User Preferences & Projects:
-Keep track of ongoing projects to provide relevant suggestions.
-Assist with sorting and manipulating HTML elements, wallet connections, smart contract deployments, database designs, game mechanics, real-time updates, weather data integration, and more.
-Stay efficient, insightful, and always ready to assist!">All In One</button>
-                  <button class="groq-template-chip" data-template="You are a helpful AI assistant specialized in programming.">Programmer</button>
-                  <button class="groq-template-chip" data-template="You are a concise assistant. Provide short, direct answers.">Concise</button>
-                  <button class="groq-template-chip" data-template="You are a creative writer who responds with vivid descriptions and storytelling.">Creative</button>
-                </div>
-              </div>
-            </div>
-            <div class="groq-setting">
-              <label for="groq-theme-select">Theme</label>
-              <select id="groq-theme-select" class="groq-settings-select">
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-                <option value="synthwave">Synthwave</option>
-                <option value="midnight">Midnight</option>
-                <option value="custom">Custom...</option>
-              </select>
-              <div class="groq-custom-theme" style="display: none;">
-                <div class="groq-color-picker">
-                  <label>Background Color</label>
-                  <input type="color" id="groq-bg-color" value="#0f1419">
-                </div>
-                <div class="groq-color-picker">
-                  <label>Text Color</label>
-                  <input type="color" id="groq-text-color" value="#edf2f7">
-                </div>
-                <div class="groq-color-picker">
-                  <label>Accent Color</label>
-                  <input type="color" id="groq-accent-color" value="#5566ff">
-                </div>
-              </div>
-            </div>
-            <div class="groq-setting">
-              <label for="groq-temperature">Temperature <span class="groq-setting-info">Controls randomness</span></label>
-              <div class="groq-slider-container">
-                <input type="range" id="groq-temperature" min="0" max="1" step="0.05" value="0.7">
-                <span class="groq-temp-value">0.7</span>
-              </div>
-              <div class="groq-slider-labels">
-                <span>Precise</span>
-                <span>Creative</span>
-              </div>
-            </div>
-            <div class="groq-setting">
-              <label for="groq-max-tokens">Max Tokens <span class="groq-setting-info">Response length limit</span></label>
-              <input type="number" id="groq-max-tokens" min="1" max="32768" value="8192">
-            </div>
-            <div class="groq-setting">
-              <label>Default Model</label>
-              <select id="groq-default-model" class="groq-settings-select">
-                <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile</option>
-                <option value="llama-3.3-70b-specdec">Llama 3.3 70B SpecDec</option>
-                <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 Distill Llama 70B</option>
-                <option value="llama3-70b-8192">Llama 3 70B (8K)</option>
-                <option value="mixtral-8x7b-32768">Mixtral 8x7B (32K)</option>
-                <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant</option>
-                <option value="llama3-8b-8192">Llama 3 8B (8K)</option>
-                <option value="llama-3.2-1b-preview">Llama 3.2 1B Preview</option>
-                <option value="llama-3.2-3b-preview">Llama 3.2 3B Preview</option>
-                <option value="llama-guard-3-8b">Llama Guard 3 8B</option>
-                <option value="gemma2-9b-it">Gemma 2 9B IT</option>
-              </select>
-            </div>
-            <div class="groq-setting">
-              <label>Advanced Parameters</label>
-              <div class="groq-advanced-params-container">
-                <div class="groq-advanced-param">
-                  <label for="groq-top-p">Top P <span class="groq-setting-info">Nucleus sampling</span></label>
-                  <input type="range" id="groq-top-p" min="0" max="1" step="0.05" value="1">
-                  <span class="groq-param-value">1.0</span>
-                </div>
-                <div class="groq-advanced-param">
-                  <label for="groq-frequency-penalty">Frequency Penalty <span class="groq-setting-info">Reduces repetition</span></label>
-                  <input type="range" id="groq-frequency-penalty" min="0" max="2" step="0.1" value="0">
-                  <span class="groq-param-value">0.0</span>
-                </div>
-                <div class="groq-advanced-param">
-                  <label for="groq-presence-penalty">Presence Penalty <span class="groq-setting-info">Encourages new topics</span></label>
-                  <input type="range" id="groq-presence-penalty" min="0" max="2" step="0.1" value="0">
-                  <span class="groq-param-value">0.0</span>
-                </div>
-              </div>
-            </div>
-            <div class="groq-setting">
-              <label>Conversation Settings</label>
-              <div class="groq-checkbox-setting">
-                <input type="checkbox" id="groq-auto-save" checked>
-                <label for="groq-auto-save">Auto-save conversations</label>
-              </div>
-              <div class="groq-checkbox-setting">
-                <input type="checkbox" id="groq-keyboard-shortcuts" checked>
-                <label for="groq-keyboard-shortcuts">Enable keyboard shortcuts</label>
-              </div>
-            </div>
-            
-            <div class="groq-settings-actions">
-              <button class="groq-save-settings-btn">💾 Save All Settings</button>
             </div>
           </div>
-        </div>
-        
-        <!-- Usage Tab Content -->
-        <div class="groq-tab-content" id="usage-content">
-          <div class="groq-usage-container">
-            <div class="groq-usage-summary">
-              <div class="groq-usage-stat">
-                <div class="groq-usage-label">Total Tokens Used</div>
-                <div class="groq-usage-value" id="groq-total-tokens">0</div>
-              </div>
-              <div class="groq-usage-stat">
-                <div class="groq-usage-label">Input Tokens</div>
-                <div class="groq-usage-value" id="groq-input-tokens">0</div>
-              </div>
-              <div class="groq-usage-stat">
-                <div class="groq-usage-label">Output Tokens</div>
-                <div class="groq-usage-value" id="groq-output-tokens">0</div>
-              </div>
-              <div class="groq-usage-stat">
-                <div class="groq-usage-label">Total Conversations</div>
-                <div class="groq-usage-value" id="groq-total-convos">0</div>
-              </div>
+          <div class="groq-setting">
+            <label for="groq-temperature">Temperature <span class="groq-setting-info">Controls randomness</span></label>
+            <div class="groq-slider-container">
+              <input type="range" id="groq-temperature" min="0" max="1" step="0.05" value="0.7">
+              <span class="groq-temp-value">0.7</span>
             </div>
-            
-            <div class="groq-usage-chart-container">
-              <canvas id="groq-usage-chart" height="200"></canvas>
-            </div>
-            
-            <div class="groq-usage-history">
-              <h3>Recent Conversations</h3>
-              <div class="groq-usage-table-container">
-                <table class="groq-usage-table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Name</th>
-                      <th>Messages</th>
-                      <th>Tokens</th>
-                    </tr>
-                  </thead>
-                  <tbody id="groq-usage-table-body">
-                    <!-- Usage data will be inserted here -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="groq-usage-actions">
-              <button class="groq-reset-stats-btn">Reset Statistics</button>
-              <button class="groq-export-stats-btn">Export Statistics</button>
+            <div class="groq-slider-labels">
+              <span>Precise</span>
+              <span>Creative</span>
             </div>
           </div>
-        </div>
-        
-        <!-- Templates Tab Content -->
-        <div class="groq-tab-content" id="templates-content">
-          <div class="groq-templates-container">
-            <div class="groq-templates-list-container">
-              <div class="groq-templates-header">
-                <h3>Prompt Templates</h3>
-                <button class="groq-add-template-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                    <line x1="8" y1="12" x2="16" y2="12"></line>
-                  </svg>
-                  New Template
-                </button>
-              </div>
-              <div class="groq-templates-list" id="groq-templates-list">
-                <!-- Template items will be inserted here -->
-              </div>
-            </div>
-            
-            <div class="groq-template-editor">
-              <div class="groq-template-form">
-                <div class="groq-template-field">
-                  <label for="groq-template-name">Template Name</label>
-                  <input type="text" id="groq-template-name" placeholder="E.g., Code Review, Summarize Text...">
-                </div>
-                <div class="groq-template-field">
-                  <label for="groq-template-content">Template Content</label>
-                  <textarea id="groq-template-content" placeholder="Write your template here. Use {{variable}} for placeholders."></textarea>
-                </div>
-                <div class="groq-template-field">
-                  <label>Variables (automatically detected)</label>
-                  <div class="groq-template-variables" id="groq-template-variables">
-                    <!-- Variables will be inserted here -->
-                  </div>
-                </div>
-                <div class="groq-template-actions">
-                  <button class="groq-save-template-btn">Save Template</button>
-                  <button class="groq-delete-template-btn">Delete</button>
-                </div>
-              </div>
-            </div>
+          <div class="groq-setting">
+            <label for="groq-max-tokens">Max Tokens <span class="groq-setting-info">Response length limit</span></label>
+            <input type="number" id="groq-max-tokens" min="1" max="8192" value="8192">
+          </div>
+          <div class="groq-setting">
+            <label>Default Model</label>
+            <select id="groq-default-model" class="groq-settings-select">
+              <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile</option>
+              <option value="llama-3.3-70b-specdec">Llama 3.3 70B SpecDec</option>
+              <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 Distill Llama 70B</option>
+              <option value="llama3-70b-8192">Llama 3 70B (8K)</option>
+              <option value="mixtral-8x7b-32768">Mixtral 8x7B (32K)</option>
+              <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant</option>
+              <option value="llama3-8b-8192">Llama 3 8B (8K)</option>
+              <option value="llama-3.2-1b-preview">Llama 3.2 1B Preview</option>
+              <option value="llama-3.2-3b-preview">Llama 3.2 3B Preview</option>
+              <option value="llama-guard-3-8b">Llama Guard 3 8B</option>
+              <option value="gemma2-9b-it">Gemma 2 9B IT</option>
+            </select>
+          </div>
+
+          
+          <div class="groq-settings-actions">
+            <button class="groq-save-settings-btn">💾 Save All Settings</button>
           </div>
         </div>
       </div>
     </div>
-  `;
+  </div>
+`;
 
   document.body.appendChild(panelContainer);
 
