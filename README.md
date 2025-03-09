@@ -1,13 +1,14 @@
 # Groq API Chrome Extension
 
-A sleek, futuristic Chrome extension for interacting with the Groq API directly from any webpage. This extension provides a floating chat interface with powerful features for developers and AI enthusiasts.
+A powerful, feature-rich Chrome extension for interacting with the Groq API directly from any webpage. This extension provides a floating chat interface with advanced features for developers and AI enthusiasts.
 
 ![Groq API Extension Screenshot](screenshot.jpg)
 
 ## Features
 
+### Core Functionality
 - 🚀 **Floating UI**: Access Groq API from any webpage with a floating, resizable interface
-- 🧩 **Multi-Model Support**: Switch between Groq's various models including:
+- 🧩 **Multi-Model Support**: Switch between Groq's latest models including:
   - Llama 3.3 70B Versatile
   - Llama 3.3 70B SpecDec
   - DeepSeek R1 Distill Llama 70B
@@ -15,16 +16,57 @@ A sleek, futuristic Chrome extension for interacting with the Groq API directly 
   - and more
 - 🖌️ **Custom System Messages**: Set custom instructions for AI behavior
 - 🔄 **Real-time Streaming**: Watch AI responses appear in real-time
-- 📋 **Code Highlighting**: Beautiful formatting for code snippets with language detection
-- 📊 **Response Metrics**: View response time and token usage statistics
-- 🔍 **Customizable Parameters**: Adjust temperature and max tokens
-- 🔒 **Secure API Key Storage**: Your API key is stored securely in Chrome's storage
-- 🖱️ **Full Window Controls**: Resize from any direction, drag, maximize, minimize
+
+### New in v2.0
+- ⌨️ **Keyboard Shortcuts**: 
+  - `Ctrl+Enter` or `Cmd+Enter`: Send message
+  - `Alt+G`: Toggle extension panel
+  - `Ctrl+1-4`: Switch between tabs
+  - `Esc`: Minimize panel
+- 💾 **Conversation Management**:
+  - Save/load conversations with custom names
+  - Auto-save conversations
+  - Clear chat history
+- 📤 **Export Options**:
+  - Export as Text (.txt)
+  - Export as Markdown (.md)
+  - Export as JSON (.json)
+  - Export as HTML (.html)
+- 🔍 **Message Reactions**:
+  - Star/favorite important messages
+  - Copy message text with one click
+  - Edit your previous messages
+  - Delete individual messages
+- 📊 **Advanced Code Formatting**:
+  - Syntax highlighting for 20+ programming languages
+  - Copy code button for each code block
+  - Language detection and formatting
+- 🌐 **Context Awareness**:
+  - Extract content from current webpage
+  - Use selected text as input
+  - Include page URL for reference
+- 📈 **API Usage Tracking**:
+  - Monitor token usage with statistics
+  - Usage visualization with charts
+  - Per-conversation metrics
+  - Export usage data
+- 🎨 **Multiple Themes**:
+  - Dark (default), Light, Synthwave, and Midnight themes
+  - Custom theme option with color pickers
+- 📝 **Prompt Templates**:
+  - Library of reusable prompt templates
+  - Create and save custom templates
+  - Variable substitution
+  - Quick insert into chat
+- ⚙️ **Advanced Parameters**:
+  - Quick access to temperature and max tokens
+  - Control top_p, frequency_penalty, and presence_penalty
+  - Save parameter presets
 
 ## Installation
 
 ### From Chrome Web Store
-1. Visit the [Chrome Web Store page](#) (coming soon???)
+1. Visit the [Chrome Web Store page](#) (coming soon)
 2. Click "Add to Chrome"
 
 ### Manual Installation (Developer Mode)
@@ -41,32 +83,29 @@ A sleek, futuristic Chrome extension for interacting with the Groq API directly 
 3. (Optional) Configure a system message to customize AI behavior
 4. Return to the Chat tab
 5. Select your preferred model
-6. Type your message and click Send
+6. Type your message and click Send or press Ctrl+Enter
 7. View the AI's response in real-time
 
-## Key Controls
+## Keyboard Shortcuts
 
-- **Resize**: Drag any edge or corner to resize the window
-- **Move**: Drag the header to reposition the window
-- **Maximize**: Click the square button to expand the window
-- **Minimize/Close**: Hides the interface (click the floating button to show again)
+- `Ctrl+Enter` / `Cmd+Enter`: Send message
+- `Alt+G`: Toggle extension panel visibility
+- `Ctrl+1`: Switch to Chat tab
+- `Ctrl+2`: Switch to Settings tab
+- `Ctrl+3`: Switch to Usage tab
+- `Ctrl+4`: Switch to Templates tab
+- `Esc`: Minimize panel
 
-## Customization
+## Themes
 
-### System Message Templates
-Use the quick templates or create your own custom system message to control how the AI responds:
+The extension includes four built-in themes:
 
-- **Programmer**: "You are a helpful AI assistant specialized in programming."
-- **Concise**: "You are a concise assistant. Provide short, direct answers."
-- **Creative**: "You are a creative writer who responds with vivid descriptions and storytelling."
+- **Dark**: Default dark theme with blue accents
+- **Light**: Light theme for daytime use
+- **Synthwave**: Retro-futuristic theme with neon colors
+- **Midnight**: Deep blue theme for night use
 
-### Model Selection
-Choose the right model for your needs:
-
-- **Llama 3.3 70B Versatile**: Best for general-purpose tasks
-- **Llama 3.1 8B Instant**: Faster responses for simpler queries
-- **Mixtral 8x7B (32K)**: Supports longer contexts
-- **DeepSeek R1 Distill**: Good balance of performance and speed
+You can also create a custom theme with your own colors for background, text, and accents.
 
 ## Privacy
 
@@ -86,13 +125,9 @@ This extension:
 ### Project Structure
 ```
 groq-api-extension/
-├── manifest.json
-├── content.js
-├── styles.css
-├── images/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
+├── manifest.json       # Extension configuration
+├── content.js          # Main extension code
+├── styles.css          # Extension styling
 └── screenshot.jpg
 ```
 
@@ -101,9 +136,19 @@ groq-api-extension/
 2. Make any desired modifications
 3. Load as an unpacked extension in Chrome
 
+## Contributing
+
+Contributions are welcome! Feel free to submit issues or pull requests.
+
+## License
+
+This project is licensed under the Unlicense - see the LICENSE file for details.
+
 ## Acknowledgments
 
 - [Groq](https://groq.com) for their powerful API
+- [Prism.js](https://prismjs.com/) for syntax highlighting
+- [Chart.js](https://www.chartjs.org/) for usage visualization
 - [Lucide](https://lucide.dev) for icon inspiration
 
 ---
